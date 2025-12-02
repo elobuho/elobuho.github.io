@@ -13,7 +13,7 @@
       "options": {
         "outputPath": "dist/demo",
         "browser": "./src/main.ts",
-        "polyfills": ["zone.js"],
+        "polyfills": [],
         "tsConfig": "tsconfig.app.json",
         "assets": [
           {
@@ -26,7 +26,7 @@
         "ssr": {
           "entry": "src/server.ts"
         },
-        "outputMode": "server"
+        "outputMode": "static"
       },
       "configurations": {
         "production": {
@@ -38,8 +38,8 @@
             },
             {
               "type": "anyComponentStyle",
-              "maximumWarning": "4kb",
-              "maximumError": "8kb"
+              "maximumWarning": "64kb",
+              "maximumError": "128kb"
             }
           ],
           "outputHashing": "all"

@@ -1,0 +1,158 @@
+<div class="mb-8">
+  <a routerLink="/demos">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke-width="1.5"
+      stroke="currentColor"
+      class="size-5 inline-block align-sub"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="m18.75 4.5-7.5 7.5 7.5 7.5m-6-15L5.25 12l7.5 7.5"
+      />
+    </svg>
+    Go back to Demos
+  </a>
+</div>
+
+<h1>Carousel component</h1>
+<p class="text-lg">
+  A classic slider built with modern techniques. Features include image
+  lazy-loading, scroll-snapping, and full responsiveness. It is also server side
+  rendering compatible.
+</p>
+
+<app-example title="Default configuration">
+  <ng-container *description>
+    <p>By default carousel component has the following settings:</p>
+    <pre class="code">
+[visibleItems]="1"
+[buttons]="true"
+[behaviour]="'smooth'"
+[pager]="true"
+[duration]="7000"
+</pre
+    >
+  </ng-container>
+  <ui-carousel
+    [visibleItems]="1"
+    [buttons]="true"
+    [behaviour]="'smooth'"
+    [pager]="true"
+    [duration]="7000"
+  >
+    <ng-container>
+      <div *uiItem class="item-square">
+        <img
+          ngSrc="Strawberry Shortcake Delight.jpeg"
+          alt="Strawberry Shortcake Delight"
+          fill
+          priority
+        />
+      </div>
+      <div *uiItem class="item-square">
+        <img
+          ngSrc="Chocolate Decadence Cake.jpeg"
+          alt="Chocolate Decadence Cake"
+          fill
+        />
+      </div>
+      <div *uiItem class="item-square">
+        <img
+          ngSrc="Vanilla Bean Dream Cake.jpeg"
+          alt="Vanilla Bean Dream Cake"
+          fill
+        />
+      </div>
+    </ng-container>
+  </ui-carousel>
+</app-example>
+
+<app-example title="Multiple items visible">
+  <ng-container *description>
+    <p>
+      Let's show two items at once. CSS variables can be used to apply a
+      negative margin (to counteract the spacing) and tweak the pagination.
+    </p>
+    <pre class="code">
+--carousel-scroll-area-margin: -16px;
+--carousel-pager-active-color: #f00;
+</pre
+    >
+  </ng-container>
+  <ui-carousel id="multiple" [visibleItems]="2" [duration]="0">
+    <ng-container>
+      <div *uiItem class="item-square mx-4">
+        <img ngSrc="kitten-1.jpg" alt="kitten-1" fill priority />
+      </div>
+      <div *uiItem class="item-square mx-4">
+        <img ngSrc="kitten-2.jpg" alt="kitten-2" fill priority />
+      </div>
+      <div *uiItem class="item-square mx-4">
+        <img ngSrc="kitten-3.jpg" alt="kitten-3" fill />
+      </div>
+      <div *uiItem class="item-square mx-4">
+        <img ngSrc="kitten-4.jpg" alt="kitten-4" fill />
+      </div>
+      <div *uiItem class="item-square mx-4">
+        <img ngSrc="kitten-5.jpg" alt="kitten-5" fill />
+      </div>
+    </ng-container>
+  </ui-carousel>
+</app-example>
+
+<app-example title="Custom buttons">
+  <ng-container *description>
+    <p>
+      Any element can be marked with uiButtonPrev and uiButtonNext directives to
+      point out custom buttons.<br />
+      <i>Tip: Non visible on mobiles.</i>
+    </p>
+  </ng-container>
+  <ui-carousel [duration]="5000">
+    <ng-container>
+      <div *uiItem class="item-rect">
+        <img ngSrc="kitten-1.jpg" alt="kitten-1" fill priority />
+      </div>
+      <div *uiItem class="item-rect">
+        <img ngSrc="kitten-2.jpg" alt="kitten-2" fill />
+      </div>
+      <div *uiItem class="item-rect">
+        <img ngSrc="kitten-3.jpg" alt="kitten-3" fill />
+      </div>
+    </ng-container>
+    <svg
+      *uiButtonPrev
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke-width="1.5"
+      stroke="currentColor"
+      class="size-12"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="M7.49 12 3.74 8.248m0 0 3.75-3.75m-3.75 3.75h16.5V19.5"
+      />
+    </svg>
+    <svg
+      *uiButtonNext
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke-width="1.5"
+      stroke="currentColor"
+      class="size-12"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="m16.49 12 3.75-3.751m0 0-3.75-3.75m3.75 3.75H3.74V19.5"
+      />
+    </svg>
+  </ui-carousel>
+</app-example>

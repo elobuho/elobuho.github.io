@@ -1,0 +1,35 @@
+@reference "tailwindcss";
+
+.scrollbar-hidden {
+  scrollbar-width: none;
+}
+
+:host {
+  @apply block;
+  > div:hover {
+    .carousel-button {
+      @apply opacity-80;
+    }
+  }
+}
+
+.scroll-area {
+  margin-inline: var(--carousel-scroll-area-margin, 0);
+}
+
+.button-wrapper {
+  @apply absolute top-1/2 -translate-y-1/2 hover:cursor-pointer pointer-coarse:hidden;
+  .carousel-button {
+    @apply opacity-0 transition-opacity duration-700 w-12 h-12 fill-white;
+  }
+}
+
+.pager-wrapper {
+  > * {
+    background-color: var(--carousel-pager-color, #fff);
+  }
+  > .active {
+    @apply hover:cursor-default;
+    background-color: var(--carousel-pager-active-color, #1481ff);
+  }
+}

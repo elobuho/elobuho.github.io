@@ -1,1 +1,42 @@
-/* You can add global styles to this file, and also import other style files */
+@import 'tailwindcss';
+
+body {
+  @apply font-sans text-gray-800 p-4 md:mx-auto md:max-w-lg lg:max-w-2xl xl:max-w-3xl;
+}
+
+h1 {
+  @apply text-4xl font-semibold mb-4;
+}
+
+h2 {
+  @apply text-3xl mb-4;
+}
+
+h3 {
+  @apply text-2xl mb-4;
+}
+
+p {
+  @apply mb-4;
+}
+
+.button {
+  @apply px-8 py-4 m-4 text-lg font-bold text-white bg-gray-800 rounded-xl relative inline-flex flex-col items-center;
+}
+
+.button::before {
+  @apply transition-all duration-700 absolute -z-10 block -inset-1 rounded-xl bg-linear-to-r from-blue-600 via-fuchsia-600 to-teal-600 blur-lg opacity-90;
+  content: '';
+}
+
+.button:hover::before {
+  @apply -inset-1.5 opacity-100;
+}
+
+.code {
+  @apply bg-gray-200 font-mono;
+}
+
+pre.code {
+  @apply mb-4 p-2 inline-block;
+}

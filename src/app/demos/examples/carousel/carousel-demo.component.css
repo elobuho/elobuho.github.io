@@ -1,0 +1,18 @@
+.item-square {
+  @apply relative aspect-square;
+  > img {
+    object-fit: cover;
+  }
+}
+
+.item-rect {
+  @apply relative aspect-2/1;
+  > img {
+    object-fit: cover;
+  }
+}
+
+#multiple {
+  --carousel-scroll-area-margin: -16px;
+  --carousel-pager-active-color: #f00;
+}

@@ -1,0 +1,77 @@
+<div
+  class="relative overflow-hidden"
+  tabindex="0"
+  (keydown.arrowLeft)="onPrevClick()"
+  (keydown.arrowRight)="onNextClick()"
+>
+  <div
+    #scrollArea
+    class="scroll-area flex transition duration-700 ease-in-out overflow-x-scroll snap-x snap-mandatory scrollbar-hidden"
+    (scrollsnapchange)="onScrollSnap($event)"
+    (uiResize)="onResize()"
+  >
+    @for (item of items(); track item) {
+    <div class="flex flex-col justify-center snap-start" [style]="itemStyle()">
+      <ng-container [ngTemplateOutlet]="item"></ng-container>
+    </div>
+    }
+  </div>
+  @if (buttons()) {
+  <div class="button-wrapper left-1/12" tabindex="-1" (click)="onPrevClick()">
+    @if (prevBtn(); as prevBtn) {
+    <ng-container [ngTemplateOutlet]="prevBtn"></ng-container>
+    } @else {
+    <ng-container [ngTemplateOutlet]="defaultPrevBtn"></ng-container>
+    }
+  </div>
+  <div class="button-wrapper right-1/12" tabindex="-1" (click)="onNextClick()">
+    @if (nextBtn(); as nextBtn) {
+    <ng-container [ngTemplateOutlet]="nextBtn"></ng-container>
+    } @else {
+    <ng-container [ngTemplateOutlet]="defaultNextBtn"></ng-container>
+    }
+  </div>
+  } @if (pager()) {
+  <div
+    class="pager-wrapper absolute top-9/10 -translate-y-1/2 w-full flex flex-wrap justify-center gap-3"
+  >
+    @for ( item of items(); track item; let index = $index; let count = $count )
+    { @if (index <= count - visibleItems()) {
+    <div
+      class="w-2 h-2 rounded-full transition-all duration-300 shadow-sm/70 hover:cursor-pointer"
+      [class.active]="index === this.index()"
+      tabindex="-1"
+      (click)="onPagerClick(index)"
+    ></div>
+    } }
+  </div>
+  }
+</div>
+
+<ng-template #defaultPrevBtn>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    class="carousel-button"
+  >
+    <path
+      fill-rule="evenodd"
+      d="M7.72 12.53a.75.75 0 0 1 0-1.06l7.5-7.5a.75.75 0 1 1 1.06 1.06L9.31 12l6.97 6.97a.75.75 0 1 1-1.06 1.06l-7.5-7.5Z"
+      clip-rule="evenodd"
+    />
+  </svg>
+</ng-template>
+
+<ng-template #defaultNextBtn>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    class="carousel-button"
+  >
+    <path
+      fill-rule="evenodd"
+      d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z"
+      clip-rule="evenodd"
+    />
+  </svg>
+</ng-template>
