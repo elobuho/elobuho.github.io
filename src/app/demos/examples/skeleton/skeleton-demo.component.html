@@ -1,0 +1,60 @@
+<div class="mb-8">
+  <a routerLink="/demos">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke-width="1.5"
+      stroke="currentColor"
+      class="size-5 inline-block align-sub"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="m18.75 4.5-7.5 7.5 7.5 7.5m-6-15L5.25 12l7.5 7.5"
+      />
+    </svg>
+    Go back to Demos
+  </a>
+</div>
+
+<h1 *uiSkeleton="isLoadingTimed(); height: 3.5; class: 'mb-4'">
+  Skeleton directive
+</h1>
+<p
+  *uiSkeleton="isLoadingTimed(); height: 1.075; class: 'mb-2.5'; repeat: 4"
+  class="text-lg"
+>
+  A structural directive with multiple inputs to adjust the placeholder
+  component. Using skeletons prevents layout shifts caused by asynchronous
+  content loading, which in turn improves user experience and boosts SEO scores.
+</p>
+
+<app-example title="Usage">
+  <ng-container *description>
+    <p>
+      The skeleton directive requires a boolean value to control the
+      placeholder. Set it to <span class="code">false</span> once the data is
+      loaded to display the real content.
+    </p>
+    <p>
+      The <span class="code">height</span> in rem units is supported, , as well
+      as the <span class="code">repeat</span> option for multiplying
+      placeholders and the <span class="code">class</span> input to match the
+      styling of the real block.
+    </p>
+    <p>Here is the real-world example:</p>
+    <pre class="code">
+*uiSkeleton="isLoading(); class: 'size-64'"
+</pre
+    >
+  </ng-container>
+
+  <div
+    class="size-64 bg-fuchsia-950 text-fuchsia-100 text-xl flex items-center"
+    *uiSkeleton="isLoading(); class: 'size-64'"
+  >
+    <p class="text-center -rotate-45">This is some lazy-loaded content</p>
+  </div>
+  <button class="button" (click)="toggleIsLoading()">Toggle isLoading</button>
+</app-example>

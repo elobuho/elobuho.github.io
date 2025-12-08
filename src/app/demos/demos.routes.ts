@@ -19,6 +19,14 @@ export const demosRoutes: Route[] = [
           ),
         title: 'Carousel Demo',
       },
+      {
+        path: 'skeleton',
+        loadComponent: () =>
+          import('./examples/skeleton/skeleton-demo.component').then(
+            (c) => c.SkeletonDemoComponent
+          ),
+        title: 'Skeleton Demo',
+      },
     ],
   },
 ];

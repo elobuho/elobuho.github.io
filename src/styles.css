@@ -20,6 +20,10 @@ p {
   @apply mb-4;
 }
 
+button {
+  @apply hover:cursor-pointer;
+}
+
 .button {
   @apply px-8 py-4 m-4 text-lg font-bold text-white bg-gray-800 rounded-xl relative inline-flex flex-col items-center;
 }
