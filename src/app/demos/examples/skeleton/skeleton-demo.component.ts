@@ -1,11 +1,17 @@
 import { Component, DOCUMENT, effect, inject, signal } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { SkeletonDirective } from '../../../shared/ui/skeleton/skeleton.directive';
 import { DescriptionDirective } from '../../ui/example/description.directive';
 import { ExampleComponent } from '../../ui/example/example.component';
 
 @Component({
   selector: 'app-skeleton-demo',
-  imports: [SkeletonDirective, ExampleComponent, DescriptionDirective],
+  imports: [
+    SkeletonDirective,
+    ExampleComponent,
+    DescriptionDirective,
+    RouterLink,
+  ],
   templateUrl: './skeleton-demo.component.html',
   styleUrl: './skeleton-demo.component.css',
 })
