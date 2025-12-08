@@ -28,7 +28,7 @@ jobs:
         run: npm run build
 
       - name: Deploy to gh-pages
-        run: npx angular-cli-ghpages -S --dir=dist/demo/browser
+        run: npx angular-cli-ghpages -S --name="ghpages" --email="bot@github.com" --dir=dist/demo/browser
         env:
           CI: true
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
