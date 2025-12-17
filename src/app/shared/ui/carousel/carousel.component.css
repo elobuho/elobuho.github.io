@@ -6,7 +6,7 @@
 
 :host {
   @apply block;
-  > div:hover {
+  > section:hover {
     .carousel-button {
       @apply opacity-80;
     }

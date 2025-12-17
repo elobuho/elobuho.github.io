@@ -4,11 +4,14 @@ import { Component, input } from '@angular/core';
 @Component({
   selector: 'ui-skeleton',
   imports: [CommonModule],
-  templateUrl: './skeleton.component.html',
+  template: ``,
   styleUrl: './skeleton.component.css',
   host: {
     '[style.height.rem]': 'height()',
     '[class]': 'class()',
+    role: 'status',
+    'aria-busy': 'true',
+    'aria-label': 'Loading content',
   },
 })
 export class SkeletonComponent {

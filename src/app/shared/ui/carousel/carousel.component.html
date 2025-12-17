@@ -1,8 +1,11 @@
-<div
+<section
   class="relative overflow-hidden"
   tabindex="0"
   (keydown.arrowLeft)="onPrevClick()"
   (keydown.arrowRight)="onNextClick()"
+  role="region"
+  aria-roledescription="carousel"
+  aria-label="Content carousel"
 >
   <div
     #scrollArea
@@ -10,43 +13,65 @@
     (scrollsnapchange)="onScrollSnap($event)"
     (uiResize)="onResize()"
   >
-    @for (item of items(); track item) {
-    <div class="flex flex-col justify-center snap-start" [style]="itemStyle()">
+    @for (item of items(); track item; let i = $index) {
+    <div
+      class="flex flex-col justify-center snap-start"
+      [style]="itemStyle()"
+      aria-roledescription="slide"
+      aria-label="Slide {{ i + 1 }} of {{ itemsCount() }}"
+    >
       <ng-container [ngTemplateOutlet]="item"></ng-container>
     </div>
     }
   </div>
+
   @if (buttons()) {
-  <div class="button-wrapper left-1/12" tabindex="-1" (click)="onPrevClick()">
+  <button
+    type="button"
+    class="button-wrapper left-1/12"
+    (click)="onPrevClick()"
+    aria-label="Previous Slide"
+    aria-controls="carousel-items"
+  >
     @if (prevBtn(); as prevBtn) {
     <ng-container [ngTemplateOutlet]="prevBtn"></ng-container>
     } @else {
     <ng-container [ngTemplateOutlet]="defaultPrevBtn"></ng-container>
     }
-  </div>
-  <div class="button-wrapper right-1/12" tabindex="-1" (click)="onNextClick()">
+  </button>
+  <button
+    type="button"
+    class="button-wrapper right-1/12"
+    (click)="onNextClick()"
+    aria-label="Next Slide"
+    aria-controls="carousel-items"
+  >
     @if (nextBtn(); as nextBtn) {
     <ng-container [ngTemplateOutlet]="nextBtn"></ng-container>
     } @else {
     <ng-container [ngTemplateOutlet]="defaultNextBtn"></ng-container>
     }
-  </div>
+  </button>
   } @if (pager()) {
   <div
     class="pager-wrapper absolute top-9/10 -translate-y-1/2 w-full flex flex-wrap justify-center gap-3"
+    role="tablist"
+    aria-label="Page controls"
   >
     @for ( item of items(); track item; let index = $index; let count = $count )
     { @if (index <= count - visibleItems()) {
     <div
       class="w-2 h-2 rounded-full transition-all duration-300 shadow-sm/70 hover:cursor-pointer"
       [class.active]="index === this.index()"
-      tabindex="-1"
+      tabindex="0"
       (click)="onPagerClick(index)"
+      [attr.aria-selected]="index === this.index()"
+      aria-label="Go to slide {{ index + 1 }}"
     ></div>
     } }
   </div>
   }
-</div>
+</section>
 
 <ng-template #defaultPrevBtn>
   <svg
